@@ -15,6 +15,7 @@ class MenuController
     puts "3 - Search for an extry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Nuke everything"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -41,6 +42,11 @@ class MenuController
       puts "Good-bye!"
 
       exit(0)
+    when 6
+      system "clear"
+      nuke
+      puts "All entries have been destroyed. Thank you!"
+      main_menu
 
     else
       system "clear"
@@ -185,6 +191,10 @@ class MenuController
        puts entry.to_s
        search_submenu(entry)
      end
+   end
+
+   def nuke
+     @address_book.entries.clear
    end
 
 end
